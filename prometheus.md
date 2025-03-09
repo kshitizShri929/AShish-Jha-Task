@@ -149,3 +149,97 @@ sudo systemctl start grafana-server
 Prometheus ek **powerful monitoring tool** hai jo **real-time data collect** karta hai aur **alerts bhejta hai jab kuch issue hota hai**. Agar aap **server, cloud ya Kubernetes** use kar rahe ho to Prometheus **best choice** hai.  
 
 
+### **Easy Hinglish Notes on Grafana**  
+
+#### **1. Grafana Kya Hai?**  
+Grafana ek **open-source visualization tool** hai jo **data ko graphs aur dashboards** ke form me dikhata hai. Iska use **monitoring aur alerting** ke liye hota hai.  
+
+✅ **Popular Monitoring Tools ke saath kaam karta hai:** Prometheus, InfluxDB, MySQL, Elasticsearch, AWS CloudWatch, etc.  
+✅ **Real-time Data Visualization** karta hai.  
+✅ **Custom Dashboards** bana sakte hain.  
+
+---
+
+#### **2. Grafana Ke Features**  
+
+✔️ **Interactive Dashboards** – Custom graphs aur charts bana sakte hain.  
+✔️ **Multiple Data Sources** – Prometheus, MySQL, PostgreSQL, Elasticsearch, etc.  
+✔️ **Alerting System** – Jab koi issue ho, email ya Telegram pe alert bhej sakte hain.  
+✔️ **User Authentication** – Role-based access control (RBAC) milta hai.  
+✔️ **Plugins Support** – Extra features ke liye plugins add kar sakte hain.  
+
+---
+
+#### **3. Grafana Installation (Linux)**  
+
+📌 **Step 1: Install Grafana**  
+```sh
+sudo apt update
+sudo apt install -y grafana
+```
+📌 **Step 2: Start Grafana Service**  
+```sh
+sudo systemctl start grafana-server
+sudo systemctl enable grafana-server
+```
+📌 **Step 3: Open Grafana UI**  
+🔗 **http://localhost:3000** (Default username: `admin`, password: `admin`)  
+
+---
+
+#### **4. Prometheus Ko Grafana Me Add Karna**  
+
+📌 **Step 1: Login to Grafana**  
+- Open **http://localhost:3000**  
+- Username/Password: **admin/admin**  
+
+📌 **Step 2: Data Source Add Karna**  
+- **Settings > Data Sources > Add New Data Source**  
+- **Select "Prometheus"**  
+- URL: **http://localhost:9090**  
+- **Save & Test** button click karo  
+
+📌 **Step 3: Dashboard Create Karna**  
+- **Create > Dashboard > Add New Panel**  
+- **Query likho (PromQL use karke)**  
+- Example:  
+  ```sh
+  node_cpu_seconds_total
+  rate(node_cpu_seconds_total[5m])
+  ```
+- Graph show hoga, **Save Dashboard** button dabao  
+
+---
+
+#### **5. Alert Setup in Grafana**  
+
+📌 **Step 1: Alert Rule Create Karo**  
+- Dashboard me jao  
+- **Edit Panel > Alert > Create Alert Rule**  
+- **Condition Set Karo:**  
+  ```sh
+  avg(rate(node_cpu_seconds_total[5m])) > 0.8
+  ```
+- **For: 5m (Agar 5 min tak issue rahe to alert bhejo)**  
+
+📌 **Step 2: Notification Channel Set Karo**  
+- **Alerting > Notification Channels**  
+- **Telegram, Slack, Email, Webhook** set kar sakte ho  
+
+---
+
+#### **6. Grafana Use Cases**  
+
+✔️ **Server Monitoring** – CPU, RAM, Disk usage check karna  
+✔️ **Application Performance** – API response time aur errors track karna  
+✔️ **Kubernetes Monitoring** – Pods aur nodes ki health track karna  
+✔️ **Database Monitoring** – MySQL, PostgreSQL performance analyze karna  
+
+---
+
+### **Conclusion**  
+Grafana ek **powerful monitoring tool** hai jo **real-time data visualize** karta hai aur **alerts bhejta hai jab kuch issue hota hai**. Agar aap **Prometheus, Kubernetes, ya MySQL** use kar rahe ho to Grafana **best choice** hai.  
+
+
+
+
